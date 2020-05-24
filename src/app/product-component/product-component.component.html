@@ -1,0 +1,47 @@
+<div id="main" style="width:100%;" class="biankuang">
+    <div id="left" style="width:20%;float:left;" class="biankuang sbj">
+      <a class="btn btn-primary btn-block"  [routerLink]="['/management']">用户管理</a>
+      <a class="btn btn-primary btn-block"  [routerLink]="['/product']">学生成绩管理</a>
+      <a class="btn btn-primary btn-block"  [routerLink]="['/usermanagment']">退出</a>
+    </div>
+    <div id="right" style="width:80%;float:left;" class="biankuang">
+      <form [formGroup]="myForm">
+        <div class="form-group">
+          <label for="id">学号</label>
+          <input type="text" class="form-control" id="id" name="id" [formControl]='id'>
+        </div>
+        <div class="form-group">
+          <label for="Name">姓名</label>
+          <input type="text" class="form-control" id="Name" name="Name" [formControl]='Name'>
+        </div>
+        <div class="form-group ">
+          <label for="chengji">成绩</label>
+          <input type="chengji" class="form-control" id="chengji" name="chengji" [formControl]='chengji'>
+        </div>
+      </form>
+      <div>
+        <button type="button" class="btn btn-primary" (click)="search1()">查询</button>
+        <button type="button" class="btn btn-success" (click)="add1()">添加</button>
+      <button type="button" class="btn btn-danger" (click)="delete1()">删除</button>
+      <button type="button" class="btn btn-warning" (click)="update1()">修改</button>
+      </div>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">学号</th>
+            <th scope="col">姓名</th>
+            <th scope="col">成绩</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor='let grade of grades$ | async; let i = index' (click)="select1(grade)">
+            <th scope="row">{{i}}</th>
+            <td>{{grade.id}}</td>
+            <td>{{grade.Name}}</td>
+            <td>{{grade.chengji}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
